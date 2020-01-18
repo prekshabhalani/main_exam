@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DASBOARD PAGE</title>
+
+    </head>
+    <body>
+        <script src=main.js></script>   
+
+        <h3> name:<script>
+            var a=    sessionStorage.getItem("currentuser");
+            document.write(a);</script> </h3>
+      <div>
+        
+             <a href="Dasboard.html" >Dasboard</a> 
+             <a href="users.html" target="_blank">Users</a>
+             <a href="userSession.html" target="_blank">Login Session</a>
+             <a href="login.html" target="_blank">Logout</a>
+ 
+      </di>
+     
+        <div>
+            <table  border="1">
+                <tr>
+                    <td>
+                        <p>User < 18 year </p>
+                    </td>
+                </tr>
+              <tr id="less"> 
+                    <td></td>
+                </tr>
+        </table>
+            <table>
+                <tr>
+                    <td>
+                        <p>User 18-50 year </p>
+
+                    </td>       </tr>
+                <tr id="medium">
+                    <td ></td >
+                </tr>
+            </table>
+            <tab-50le>
+              <tr>
+                    <td>
+                        <p>User > 50 year </p>
+
+                    </td>
+                </tr>
+                <tr id="high">
+                    <td ></td>
+                </tr>
+            </table>
+    <p id="birthday">  </p>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <title>Users </title>
+
+    </head>
+    <body>
+
+       
+        <h3> name:<script>
+            var a=    sessionStorage.getItem("currentuser");
+            document.write(a);</script> </h3>
+
+       
+            <a href="Dasboard.html" >Dasboard</a> 
+            <a href="users.html" target="_blank">Users</a>
+            <a href="userSession.html" target="_blank">Login Session</a>
+            <a href="login.html" target="_blank">Logout</a>
+
+
+        </div>
+        <div style="float: left;">
+            <p>Add users</p>
+            <hr>
+            <input type="text" id="userName" placeholder="Name" >
+            <input type="email" id="userEmail" placeholder="email">
+            <input type="password" id="userPassword" placeholder="password">
+            <input type="date" id="birthdayDate" >
+            <input type="button" value="Add User" id="adduser" onclick="validateData()">
+        </div>
+        <div id="display">
+            
+
+         </div>
+    </body>
+
+    </html>
