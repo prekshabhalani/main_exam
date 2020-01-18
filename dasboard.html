@@ -5,52 +5,52 @@
 
     </head>
     <body>
-        <script src=main.js></script>   
-
         <h3> name:<script>
             var a=    sessionStorage.getItem("currentuser");
             document.write(a);</script> </h3>
       <div>
-        
              <a href="Dasboard.html" >Dasboard</a> 
              <a href="users.html" target="_blank">Users</a>
              <a href="userSession.html" target="_blank">Login Session</a>
              <a href="login.html" target="_blank">Logout</a>
- 
       </di>
-     
         <div>
-            <table  border="1">
+            <table  border="1"  style="float: left;">
                 <tr>
                     <td>
-                        <p>User < 18 year </p>
+                        <p> User < 18 year </p>
                     </td>
                 </tr>
-              <tr id="less"> 
-                    <td></td>
+              <tr> 
+                    <td id="less"></td>
                 </tr>
         </table>
-            <table>
+            <table  style="float: left;" border="1">
                 <tr>
                     <td>
                         <p>User 18-50 year </p>
 
                     </td>       </tr>
-                <tr id="medium">
-                    <td ></td >
+                <tr >
+                    <td id="between"></td>
                 </tr>
-            </table>
-            <tab-50le>
+            </table  style="float: left;">
+            <table border="1">
               <tr>
                     <td>
                         <p>User > 50 year </p>
 
                     </td>
                 </tr>
-                <tr id="high">
-                    <td ></td>
+                <tr>
+                    <td id="more"></td>
                 </tr>
             </table>
+            <table id="bd">
+            </table>
     <p id="birthday">  </p>
+    
+    <script src=dasboard.js></script>   
+
 </body>
 </html>
