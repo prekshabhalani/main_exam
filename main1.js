@@ -1,18 +1,19 @@
-
+btid=null;
+var buttonadd = "<input type='button' value='Add User' id='adduser' onclick='validateData()'/>";
+document.getElementById("buttonAddEdit").innerHTML=buttonadd;    
 var arr = new Array();
 if (localStorage.getItem("userDetail") == null) {
 }
 else {
     arr = JSON.parse(localStorage.getItem("userDetail"));
-    var buttonedit = "<input type='button' value='Edit' id='edit' onclick='editData(i)'/>";
-    var buttondelete = "<input type='button' value='Delete' id='delete' onclick='deleteData()'/>";
+       var buttondelete = "<input type='button' value='Delete' id='delete' onclick='deleteData()'/>";
     var table1 =
         "<table border=1><tr><th>Index</th><th>Name</th><th>email</th><th>password</th><th>birth year</th><th>Age</th><th>Action</th></tr>";
     for (var i = 0; i < arr.length; i++) {
         table1 +=
             "<tr><td>" +
             (i + 1) +
-            "</td><td >" +
+            "</td><td hidden>" +
             arr[i].id +
             "</td><td>" +
             arr[i].names +
@@ -24,10 +25,10 @@ else {
             arr[i].birthDate +
             "</td><td>" +
             arr[i].age +
-            "</td><td>" + 
-            "<input type='button' value='Edit' id="+i+" onclick='editData(this.id)'/>"
-            
-            + "<input type='button' value='Delete' id="+i+" onclick='deleteData(this.id)'/>"+
+            "</td><td>" +
+            "<input type='button' value='Edit' id=" + i + " onclick='editData(this.id)'/>"
+
+            + "<input type='button' value='Delete' id=" + i + " onclick='deleteData(this.id)'/>" +
             "</td></tr>";
     }
     table1 += "<tr></tr></table>";
@@ -90,49 +91,67 @@ function validateData() {
 }
 function saveData1() {
     //store value into localstorage
-    if (localStorage.getItem("userDetail") == null) {
-        userDetail.id = 1;
-        userstore.push(userDetail);
-        localStorage.setItem("userDetail", JSON.stringify(userstore));
-        userstore = JSON.parse(localStorage.getItem("userDetail"));
-        //        display();
-    }
-    else {
-        userstore = JSON.parse(localStorage.getItem("userDetail"));
-        userDetail.id = (userstore[userstore.length - 1].id) + 1;
-        userstore.push(userDetail);
-        localStorage.setItem("userDetail", JSON.stringify(userstore));
-        //        display();
+    if(btid==null){
+        if (localStorage.getItem("userDetail") == null) {
+            userDetail.id = 1;
+            userstore.push(userDetail);
+            localStorage.setItem("userDetail", JSON.stringify(userstore));
+            userstore = JSON.parse(localStorage.getItem("userDetail"));
+            //        display();
+        }
+        else {
+            userstore = JSON.parse(localStorage.getItem("userDetail"));
+            userDetail.id = (userstore[userstore.length - 1].id) + 1;
+            userstore.push(userDetail);
+            localStorage.setItem("userDetail", JSON.stringify(userstore));
+            //        display();
+        }}
+    else
+    {
+        arr[btid].names=userDetail.names;
+        arr[btid].email=userDetail.email;
+        arr[btid].password=userDetail.password;
+        arr[btid].birthDate=userDetail.birthDate;
+        arr[btid].age=userDetail.age;
+        localStorage.setItem("userDetail", JSON.stringify(arr));
+        
     }
 }
-function editData(id) {
-    for(var i=0;i<arr.length;i++)
+var buttonedit = "<input type='button' value='Edit User' id='edituser' onclick='validateData()'/>";
+
+function editData(btid) {
+    for (var i = 0; i < arr.length; i++) {
+        this.btid=btid;
+        if (btid == i) {
+             document.getElementById("userName").value = arr[i].names;
+            document.getElementById("userEmail").value = arr[i].email;
+             document.getElementById("userPassword").value = arr[i].password;
+             document.getElementById("birthdayDate").value = arr[i].birthDate;
+            document.getElementById("buttonAddEdit").innerHTML=buttonedit;            
+        }
+    }
+
+}
+function storeedit(id)
+{
+    for(var i=0;i<=arr.length;i++)
     {
         if(id==i)
         {
-            alert(arr[i].names);
-                
+
         }
     }
-    
-    window.location.reload();
 }
 
 function deleteData(id) {
-    for(var i=0;i<arr.length;i++)
-    {
-        if(id==i)
-        {
-            delete arr[i];
+    for (var i = 0; i < arr.length; i++) {
+        if (id == i) {
+            arr.splice(i, 1);
+            break;
         }
     }
-    for( var i = 0; i < arr.length; i++){ 
-        if ( arr[i] == null) {
-          arr.splice(i, 1); 
-          i--;
-        }
-        }    localStorage.setItem("userDetail", JSON.stringify(arr));
-        window.location.reload();
+    localStorage.setItem("userDetail", JSON.stringify(arr));
+    window.location.reload();
 }
 function storelogout() {
 
